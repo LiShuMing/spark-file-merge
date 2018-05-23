@@ -1,0 +1,13 @@
+#Wed Jul 26 15:02:22 CST 2017
+execution-jar=parquet-mergetool.jar
+master=yarn-client
+classpath=.:./lib/*
+class=netease.bigdata.mergetool.Main
+conf.spark.dynamicAllocation.maxExecutors=10
+spark-version=1.6.2-2.7.3
+executor-memory=10000m
+language=java
+dependencies=
+type=spark
+jars=lib/*
+Xmx=1024m

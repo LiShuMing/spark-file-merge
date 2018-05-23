@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='netease.bigdata.mergetool.mappers.PartitionMapper'>
+
+    <select id='getPartitionByDir' parameterType='String' resultType='netease.bigdata.mergetool.domain.Partition'>
+        SELECT
+        dir,
+        numMerged,
+        inputPaths
+        FROM PARTITION
+        WHERE dir = #{dir}
+    </select>
+    <!-- Instead of referencing Fully Qualified Class Names we can register Aliases in mybatis-config.xml and use Alias names. -->
+    <resultMap type='Partition' id='PartitionResult'>
+        <id property='dir' column='dir'/>
+        <result property='numMerged' column='numMerged'/>
+        <result property='inputPaths' column='inputPaths'/>
+    </resultMap>
+
+    <insert id='insertPartition' parameterType='Partition'>
+        INSERT INTO PARTITION
+        VALUES(#{dir}, #{numMerged}, #{inputPaths})
+    </insert>
+
+    <delete id='deletePartition' parameterType='String'>
+        DELETE FROM PARTITION WHERE dir = #{dir}
+    </delete>
+
+</mapper>
